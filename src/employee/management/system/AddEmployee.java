@@ -8,13 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+// JFrame in java Swing used for GUI purposes
+
 public class AddEmployee extends JFrame implements ActionListener {
 
     Random ran = new Random();
     int number = ran.nextInt(999999);
 
+    // Allowing user for input in boxes
     JTextField tname, tfname, taddress, tphone, taddhar, temail, tsalary, tdesignation;
 
+    // Provide a label on screen..
     JLabel tempid;
 
     // For Date Picker
@@ -27,8 +31,10 @@ public class AddEmployee extends JFrame implements ActionListener {
 
     AddEmployee(){
 
+        // Background Color is set
         getContentPane().setBackground(new Color(160,255,188));
 
+        // Creates heading text and positions it on frame.
         JLabel heading = new JLabel("Add Employee Details");
         heading.setBounds(320,30,500,50);
         heading.setFont(new Font("serif", Font.BOLD,25));
@@ -40,6 +46,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         name.setFont(new Font("SAN_SERIF", Font.BOLD,20));
         add(name);
 
+        // Creates a textbox to type name
         tname = new JTextField();
         tname.setBounds(200,150,150,30);
         tname.setBackground(new Color(177,252,197));
@@ -166,7 +173,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         back.setBounds(250,550,150,40);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.BLACK);
-        back.addActionListener(this);
+        back.addActionListener(this);   // to listen the click of button or action of them
         add(back);
 
         add = new JButton("ADD");
@@ -189,10 +196,12 @@ public class AddEmployee extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == add){
-            // The data we are gonna pass in text field is going to come here/ i.e extracted  and get store into DB
+
+            // The data we are gonna pass in text field is going to come here & .getText() is used for extracted  & getting store into DB
             String name = tname.getText();
             String fname = tfname.getText();
-            // extracted the date
+
+            // extracted the date / textfields
             String dob = ((JTextField)tdob.getDateEditor().getUiComponent()).getText();
             String salary = tsalary.getText();
             String addhar = taddhar.getText();
@@ -209,7 +218,9 @@ public class AddEmployee extends JFrame implements ActionListener {
 
             //passing the data into db
             try{
+
                 Conn c = new Conn();  // --> object created of conn class
+                
                 String query = "insert into employee values('"+name+"','"+fname+"','"+dob+"','"+salary+"','"+address+"','"+phone+"','"+email+"','"+education+"','"+designation+"','"+addhar+"','"+empId+"')";
                 c.statement.executeUpdate(query);
                 JOptionPane.showMessageDialog(null,"Details Added Successfully");

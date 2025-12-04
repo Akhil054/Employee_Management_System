@@ -15,14 +15,14 @@ public class Login extends JFrame implements ActionListener {
 
     Login(){
 
-        // JLabel is used because we are brining image on frame
+        // JLabel is used because we are brining txt on frame
         // Main use of JLabel is bring the textfield visible on Frame
 
         JLabel username = new JLabel("User Name - ");      //text written under double quotes will be visible on frame
         username.setBounds(40,20,100,30);   // SetBound is used for getting up the text position
         add(username);
 
-        tusername = new JTextField();
+        tusername = new JTextField();  // for normal text
         tusername.setBounds(150,20,150,30);
         add(tusername);
 
@@ -42,7 +42,7 @@ public class Login extends JFrame implements ActionListener {
         login.setBounds(150,140,150,30);
         login.setBackground(Color.black);      // Setting the bg of button as black
         login.setForeground(Color.black);      // Setting color as white of text
-        login.addActionListener(this);
+        login.addActionListener(this);      // To detect button clicks.
         add(login);
 
 

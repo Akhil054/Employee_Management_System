@@ -18,7 +18,11 @@ public class Conn {
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");      // jdbc
+
+            // connection = DriverManager.getConnection(…) this will help me to connect java with sql
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeemanagement","root","Akhil#3012");
+
+            // To execute SQL queries.
             statement = connection.createStatement();
         }
         catch (Exception e)
